@@ -60,4 +60,10 @@ describe('SweetShopManagementSystem Tests', () => {
         const sweet = new Sweet(8, "Barfi", "Milk Sweet", -50, 10);
         expect(() => shop.addSweet(sweet)).toThrow("Price must be a valid positive number!");
     });
+
+     // ✅ Test 9: Invalid quantity (negative)
+    test('addSweetWithInvalidQuantityTest', () => {
+        const sweet = new Sweet(9, "Kaju Katli", "Dry Sweet", 80, -5);
+        expect(() => shop.addSweet(sweet)).toThrow("Quantity must be a non-negative integer!");
+    });
 });

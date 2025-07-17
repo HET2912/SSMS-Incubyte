@@ -20,9 +20,10 @@ class SweetShopManagementSystem {
         this.#validateSweetName(sweet.name);
         this.#validateSweetCategory(sweet.category);
         this.#validatePrice(sweet.pricePerUnit);
-        
-        this.#availableSweets.push(sweet); // You missed this line!
+        this.#validateQuantity(sweet.quantityInStock);
 
+        this.#availableSweets.push(sweet); // Add sweet to available sweets
+        
         console.log(`Sweet "${sweet.name}" added successfully!`);
     }
 
@@ -55,6 +56,13 @@ class SweetShopManagementSystem {
     #validatePrice(price) {
         if (typeof price !== 'number' || isNaN(price) || price <= 0) {
             throw new Error("Price must be a valid positive number!");
+        }
+    }
+
+    // ✅ Validate quantity (must be integer >= 0)
+    #validateQuantity(quantity) {
+        if (typeof quantity !== 'number' || !Number.isInteger(quantity) || quantity < 0) {
+            throw new Error("Quantity must be a non-negative integer!");
         }
     }
 }
