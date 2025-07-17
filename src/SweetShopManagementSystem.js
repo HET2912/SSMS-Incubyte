@@ -19,7 +19,7 @@ class SweetShopManagementSystem {
             console.log(`Sweet "${sweet.name}" added successfully!`);
         }
     }
-
+  // Private method to Check if the title is null or an empty string, throws an error
     #validateSweetName(name) {
         if (name === null) {
             throw new Error("Sweet name cannot be null!");

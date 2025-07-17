@@ -25,5 +25,12 @@ describe('SweetShopManagementSystem Tests', () => {
     test('addSweetWithEmptyNameTest', () => {
         const sweet = new Sweet('', 'Dry Sweet', 30, 50);
         expect(() => shop.addSweet(sweet)).toThrow('Sweet name cannot be empty');
+
     });
+    test('addSweetWithNullNameTest', () => {
+        const sweet = new Sweet(null, 'Dry Sweet', 30, 50);
+        expect(() => shop.addSweet(sweet)).toThrow('Sweet name cannot be null!');
+    });
+
+
 });
