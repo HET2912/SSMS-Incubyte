@@ -8,13 +8,26 @@ class SweetShopManagementSystem {
     getAvailableSweets() {
         return [...this.#availableSweets];
     }
-     // Get a list of sold sweets
+    // Get a list of sold sweets
     getSoldSweets() {
         return [...this.#soldSweets];
     }
-      // Add a sweet to the shop
+    // Add a sweet to the shop
     addSweet(sweet) {
-        this.#availableSweets.push(sweet);
-        console.log(`Sweet "${sweet.name}" added successfully!`);
+        if (this.#validateSweetName(sweet.name)) {
+            this.#availableSweets.push(sweet);
+            console.log(`Sweet "${sweet.name}" added successfully!`);
+        }
     }
+
+    #validateSweetName(name) {
+        if (name === null) {
+            throw new Error("Sweet name cannot be null!");
+        } else if (name.trim() === "") {
+            throw new Error("Sweet name cannot be empty");
+        }
+        return true;
+    }
+
 }
+module.exports = SweetShopManagementSystem;

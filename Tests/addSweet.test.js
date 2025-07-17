@@ -6,19 +6,24 @@ describe('SweetShopManagementSystem Tests', () => {
     let availableSweets;
     let soldSweets;
 
-    // beforeEach: runs before each test to reset the shop state
     beforeEach(() => {
         shop = new SweetShopManagementSystem();
         availableSweets = shop.getAvailableSweets();
         soldSweets = shop.getSoldSweets();
     });
 
-    // Test to check adding a valid sweet to the shop
+    // ✅ Test 1: Add a valid sweet
     test('addSweetTest', () => {
         const sweet = new Sweet("Gulab Jamun", "Milk Sweet", 25, 100);
         shop.addSweet(sweet);
         const updatedAvailableSweets = shop.getAvailableSweets();
         expect(updatedAvailableSweets).toHaveLength(1);
         expect(updatedAvailableSweets).toContainEqual(sweet);
+    });
+
+    // ✅ Test 2: Add a sweet with an empty name - should throw error
+    test('addSweetWithEmptyNameTest', () => {
+        const sweet = new Sweet('', 'Dry Sweet', 30, 50);
+        expect(() => shop.addSweet(sweet)).toThrow('Sweet name cannot be empty');
     });
 });
