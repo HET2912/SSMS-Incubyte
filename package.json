@@ -1,0 +1,19 @@
+{
+  "name": "ssms-incubyte",
+  "version": "1.0.0",
+  "description": "This is a simple sweets shop management system entirely implemented using a Test Driven Development (TDD) approach. It allows users to perform basic operations such as adding sweets, placing orders, viewing available sweets, and managing inventory. The application is implemented using JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "SSMS-Incubyte"
+  },
+  "author": "Het Patel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "jest": "^30.0.4"
+  }
+}
