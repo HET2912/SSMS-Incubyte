@@ -19,11 +19,11 @@ class SweetShopManagementSystem {
         this.#validateSweetId(sweet.id);
         this.#validateSweetName(sweet.name);
         this.#validateSweetCategory(sweet.category);
-        this.#validatePrice(sweet.pricePerUnit);
-        this.#validateQuantity(sweet.quantityInStock);
+        this.#validatePrice(sweet.price);
+        this.#validateQuantity(sweet.quantity);
 
         this.#availableSweets.push(sweet); // Add sweet to available sweets
-        
+
         console.log(`Sweet "${sweet.name}" added successfully!`);
     }
 
@@ -65,6 +65,17 @@ class SweetShopManagementSystem {
             throw new Error("Quantity must be a non-negative integer!");
         }
     }
+
+
+    // ✅ View a sweet by ID
+    viewSweetById(id) {
+        const sweet = this.#availableSweets.find(sweet => sweet.id === id);
+        if (!sweet) {
+            throw new Error(`Sweet with ID ${id} not found!`);
+        }
+        return { ...sweet }; // Return a copy (defensive)
+    }
+
 }
 
 module.exports = SweetShopManagementSystem;
