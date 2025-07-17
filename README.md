@@ -31,45 +31,63 @@ Three rules of TDD:
 
 ### Prerequisites
 
-- Node.js and npm installed
+Make sure the following are installed on your system:
+- Node.js
+- npm (Node Package Manager)
 
-### Installation
+### Installation Steps
 
-1. Clone this repository:
-   git clone https://github.com/HET2912/SSMS-Incubyte.git
+1. Download or clone the project using this link:
+   https://github.com/HET2912/SSMS-Incubyte.git
 
-2. Navigate to the project folder:
-   cd sweet-shop-management
+2. Open a terminal/command prompt and go to the project folder.
 
-3. Install dependencies:
-   npm install
+3. Type the command to install all the required packages:
+   (This will download everything the project needs to run.)
+   → Run: `npm install`
 
 ---
 
 ## Running the Tests
 
-To run all tests:
-  npm test
+### To run **all the tests** at once:
+- Open the terminal in the project folder
+- Type and run:
+  → `npm test`
 
-To run specific test files:
-  npx jest tests/addSweet.test.js
-  npx jest tests/viewSweet.test.js
-  npx jest tests/deleteSweet.test.js
-  npx jest tests/searchSweet.test.js
-  npx jest tests/purchaseSweet.test.js
-  npx jest tests/restockSweet.test.js
+### To test specific features individually:
+
+- ✅ To test adding sweets:
+  → Run: `npx jest tests/addSweet.test.js`
+
+- 🔍 To test viewing sweets:
+  → Run: `npx jest tests/viewSweet.test.js`
+
+- ❌ To test deleting sweets:
+  → Run: `npx jest tests/deleteSweet.test.js`
+
+- 🔎 To test searching sweets:
+  → Run: `npx jest tests/searchSweet.test.js`
+
+- 💰 To test purchasing sweets:
+  → Run: `npx jest tests/purchaseSweet.test.js`
+
+- 📦 To test restocking sweets:
+  → Run: `npx jest tests/restockSweet.test.js`
+
+(You can copy and paste any of the above commands into your terminal.)
 
 ---
 
 ## Built With
 
-- JavaScript (Node.js)
-- Jest (for testing)
+- JavaScript (Node.js) – Core application logic
+- Jest – For writing and running tests
 
 ---
 
 ## Author
 
-Het Patel  
+**Het Patel**  
 L.D. College of Engineering  
-GitHub: https://github.com/HET2912
+GitHub: [https://github.com/HET2912](https://github.com/HET2912)
