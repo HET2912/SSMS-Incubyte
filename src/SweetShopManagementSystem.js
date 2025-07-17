@@ -104,6 +104,44 @@ class SweetShopManagementSystem {
     }
 
 
+
+    // ✅ Purchase a sweet by ID and quantity
+    purchaseSweet(id, quantity) {
+        if (typeof id !== 'number' || !Number.isInteger(id) || id <= 0) {
+            throw new Error("Invalid sweet ID.");
+        }
+
+        if (typeof quantity !== 'number' || quantity <= 0 || !Number.isInteger(quantity)) {
+            throw new Error("Purchase quantity must be a positive integer.");
+        }
+
+        const sweetIndex = this.#availableSweets.findIndex(s => s.id === id);
+        if (sweetIndex === -1) {
+            throw new Error(`Sweet with ID ${id} not found.`);
+        }
+
+        const sweet = this.#availableSweets[sweetIndex];
+
+        if (sweet.quantity < quantity) {
+            throw new Error(`Only ${sweet.quantity} units available for ${sweet.name}.`);
+        }
+
+        // Deduct quantity from available
+        sweet.quantity -= quantity;
+
+        // Add to sold list
+        this.#soldSweets.push({
+            id: sweet.id,
+            name: sweet.name,
+            category: sweet.category,
+            quantity: quantity,
+            price: sweet.price,
+            totalAmount: quantity * sweet.price
+        });
+
+        console.log(`${quantity} ${sweet.name}(s) purchased successfully!`);
+    }
+
 }
 
 module.exports = SweetShopManagementSystem;
