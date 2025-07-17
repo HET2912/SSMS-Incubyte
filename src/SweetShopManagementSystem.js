@@ -76,6 +76,19 @@ class SweetShopManagementSystem {
         return { ...sweet }; // Return a copy (defensive)
     }
 
+
+    // ✅ Delete a sweet by ID
+    deleteSweetById(id) {
+        const index = this.#availableSweets.findIndex(sweet => sweet.id === id);
+        if (index === -1) {
+            throw new Error(`Sweet with ID ${id} not found!`);
+        }
+
+        const deletedSweet = this.#availableSweets.splice(index, 1)[0];
+        console.log(`Sweet "${deletedSweet.name}" with ID ${id} deleted successfully!`);
+    }
+
+
 }
 
 module.exports = SweetShopManagementSystem;
