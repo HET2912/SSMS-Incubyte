@@ -40,11 +40,18 @@ describe('SweetShopManagementSystem Tests', () => {
         const sweet = new Sweet(5,'Ladoo', null, 20, 50);
         expect(() => shop.addSweet(sweet)).toThrow('Sweet category cannot be null or empty!');
     });
-      // ✅ Test 6: Duplicate ID
+
+    // ✅ Test 6: Duplicate ID
     test('addSweetWithDuplicateIdTest', () => {
         const sweet1 = new Sweet(6, "Rasgulla", "Milk Sweet", 40, 15);
         const sweet2 = new Sweet(6, "Soan Papdi", "Dry Sweet", 20, 20); // Same ID as sweet1
         shop.addSweet(sweet1);
         expect(() => shop.addSweet(sweet2)).toThrow("Sweet with ID 6 already exists!");
+    });
+
+    // ✅ Test 7: Invalid ID (not positive integer)
+    test('addSweetWithInvalidIdTest', () => {
+        const sweet = new Sweet(-1, "Jalebi", "Fried Sweet", 30, 25);
+        expect(() => shop.addSweet(sweet)).toThrow("Sweet ID must be a positive integer!");
     });
 });
