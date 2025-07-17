@@ -89,6 +89,21 @@ class SweetShopManagementSystem {
     }
 
 
+    // ✅ Search sweets by name or category (case-insensitive)
+    searchSweets({ name, category }) {
+        return this.#availableSweets.filter(sweet => {
+            const matchesName = name
+                ? sweet.name.toLowerCase().includes(name.toLowerCase())
+                : true;
+            const matchesCategory = category
+                ? sweet.category.toLowerCase() === category.toLowerCase()
+                : true;
+
+            return matchesName && matchesCategory;
+        });
+    }
+
+
 }
 
 module.exports = SweetShopManagementSystem;
