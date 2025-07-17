@@ -4,40 +4,51 @@ class SweetShopManagementSystem {
     #availableSweets = [];
     #soldSweets = [];
 
-    // Get a list of available sweets
+    // ✅ Get a list of available sweets
     getAvailableSweets() {
-        return [...this.#availableSweets];
+        return [...this.#availableSweets]; // Defensive copy
     }
-    // Get a list of sold sweets
+
+    // ✅ Get a list of sold sweets
     getSoldSweets() {
-        return [...this.#soldSweets];
+        return [...this.#soldSweets]; // Defensive copy
     }
-    // Add a sweet to the shop
+
+    // ✅ Add a sweet to the shop
     addSweet(sweet) {
-        if (
-            this.#validateSweetName(sweet.name) &&
-            this.#validateSweetCategory(sweet.category)
-        ) {
-            this.#availableSweets.push(sweet);
-            console.log(`Sweet "${sweet.name}" added successfully!`);
+        this.#validateSweetId(sweet.id);
+        this.#validateSweetName(sweet.name);
+        this.#validateSweetCategory(sweet.category);
+    
+        this.#availableSweets.push(sweet); // You missed this line!
+
+        console.log(`Sweet "${sweet.name}" added successfully!`);
+    }
+
+    // ✅ Validate ID (must be unique and a positive number)
+    #validateSweetId(id) {
+        if (typeof id !== 'number' || id <= 0 || !Number.isInteger(id)) {
+            throw new Error("Sweet ID must be a positive integer!");
+        }
+        const idExists = this.#availableSweets.some(sweet => sweet.id === id);
+        if (idExists) {
+            throw new Error(`Sweet with ID ${id} already exists!`);
         }
     }
 
-    #validateSweetCategory(category) {
-        if (category === null) throw new Error("Sweet category cannot be null!");
-        if (category.trim() === "") throw new Error("Sweet category cannot be empty!");
-        return true;
-    }
-
-    // Private method to Check if the title is null or an empty string, throws an error
+    // ✅ Validate sweet name (non-null and non-empty)
     #validateSweetName(name) {
-        if (name === null) {
-            throw new Error("Sweet name cannot be null!");
-        } else if (name.trim() === "") {
-            throw new Error("Sweet name cannot be empty");
+        if (name === null || typeof name !== 'string' || name.trim() === '') {
+            throw new Error("Sweet name cannot be null or empty!");
         }
-        return true;
     }
 
+    // ✅ Validate sweet category (non-null and non-empty)
+    #validateSweetCategory(category) {
+        if (category === null || typeof category !== 'string' || category.trim() === '') {
+            throw new Error("Sweet category cannot be null or empty!");
+        }
+    }
 }
+
 module.exports = SweetShopManagementSystem;
