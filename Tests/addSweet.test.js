@@ -31,6 +31,17 @@ describe('SweetShopManagementSystem Tests', () => {
         const sweet = new Sweet(null, 'Dry Sweet', 30, 50);
         expect(() => shop.addSweet(sweet)).toThrow('Sweet name cannot be null!');
     });
+    // Test to ensure adding a sweet with an empty category throws an error
+    test('addSweetWithEmptyCategoryTest', () => {
+        const sweet = new Sweet('Ladoo', '', 20, 50);
+        expect(() => shop.addSweet(sweet)).toThrow('Sweet category cannot be empty!');
+    });
+
+    // Test to ensure adding a sweet with a null category throws an error
+    test('addSweetWithNullCategoryTest', () => {
+        const sweet = new Sweet('Ladoo', null, 20, 50);
+        expect(() => shop.addSweet(sweet)).toThrow('Sweet category cannot be null!');
+    });
 
 
 });
