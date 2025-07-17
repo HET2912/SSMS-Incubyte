@@ -54,4 +54,10 @@ describe('SweetShopManagementSystem Tests', () => {
         const sweet = new Sweet(-1, "Jalebi", "Fried Sweet", 30, 25);
         expect(() => shop.addSweet(sweet)).toThrow("Sweet ID must be a positive integer!");
     });
+
+    // ✅ Test 8: Invalid price (negative)
+    test('addSweetWithInvalidPriceTest', () => {
+        const sweet = new Sweet(8, "Barfi", "Milk Sweet", -50, 10);
+        expect(() => shop.addSweet(sweet)).toThrow("Price must be a valid positive number!");
+    });
 });
