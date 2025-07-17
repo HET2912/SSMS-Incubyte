@@ -54,7 +54,6 @@ To run all tests:
 To run specific test files:
   npx jest tests/addSweet.test.js
   npx jest tests/viewSweet.test.js
-  npx jest tests/updateSweet.test.js
   npx jest tests/deleteSweet.test.js
   npx jest tests/searchSweet.test.js
   npx jest tests/purchaseSweet.test.js
